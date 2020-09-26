@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Carlos Andrés Martinez",
+    "description": "aa",
+    "img": "../images/default-profile.png"
+  },
+  {
+    "name": "Farid Alexis Estepa Quintero",
+    "description": "aa",
+    "img": "../images/default-profile.png"
+  },
+  {
+    "name": "Juan Camilo Paredes Coronel",
+    "description": "aa",
+    "img": "../images/default-profile.png"
+  },
+  {
+    "name": "León Sebastian Díaz L.",
+    "description": "aa",
+    "img": "../images/default-profile.png"
+  },
+  {
+    "name": "Miguel Ángel Ortiz Marín",
+    "description": "lorem ipsum",
+    "img": "../images/MiguelOrtiz.jpg"
+  }
+]
