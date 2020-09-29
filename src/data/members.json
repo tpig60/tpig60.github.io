@@ -1,27 +1,32 @@
 [
   {
-    "name": "Carlos Andrés Martinez",
-    "description": "aa",
+    "name": "Carlos Andrés Martinez Ríos",
+    "description": "Estudiante de 9no semestre de Ingeniería Electrónica en doble titulación con Medicina en la Universidad Nacional de Colombia. Experiencia en IoT, sistemas embebidos, microprocesadores, diseño gráfico, equipos médicos y biosensórica.",
+    "career": "Ing. Electrónica y Medicina",
     "img": "../images/default-profile.png"
   },
   {
     "name": "Farid Alexis Estepa Quintero",
     "description": "aa",
-    "img": "../images/default-profile.png"
+    "career": "Ing. Mecatrónica",
+    "img": "../images/FairdEstepa.jpg"
   },
   {
     "name": "Juan Camilo Paredes Coronel",
     "description": "aa",
+    "career": "Ing. Mecánica",
     "img": "../images/default-profile.png"
   },
   {
     "name": "León Sebastian Díaz L.",
     "description": "aa",
+    "career": "Ing. Mecatrónica",
     "img": "../images/default-profile.png"
   },
   {
     "name": "Miguel Ángel Ortiz Marín",
     "description": "lorem ipsum",
+    "career": "Ing. Sistemas y Computación",
     "img": "../images/MiguelOrtiz.jpg"
   }
 ]

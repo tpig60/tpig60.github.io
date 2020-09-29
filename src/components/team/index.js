@@ -7,28 +7,31 @@ import { DialogOverlay, DialogContent } from "@reach/dialog"
 import VisuallyHidden from "@reach/visually-hidden"
 import "@reach/dialog/styles.css"
 
-const Image = styled(Img)(() => [
+const Image = styled(Img)(({ size }) => [
   `
-    min-width: 224px;
-    min-height: 224px;
+    width: ${size}px;
+    height: ${size}px;
   `,
-  tw`rounded-md shadow-md`,
+  tw`rounded-full shadow-md`,
 ])
 
-function TeamMember({ name, img }) {
+function TeamMember({ name, description, img, career }) {
   const [showDialog, setShowDialog] = useState(false)
   const open = () => setShowDialog(true) 
   const close = () => setShowDialog(false)
 
   return (
-    <div>
-      <div 
+    <>
+      <button
+        role="dialog"
         onClick={open}
-        tw="flex flex-col p-4 justify-center items-center text-center font-sans"
+        onKeyDown={open}
+        tw="w-full md:w-1/3 lg:w-1/5 flex flex-col p-4 justify-start items-center text-center font-sans"
       >
-        <Image fluid={img.childImageSharp.fluid} />
-        <p>{name}</p>
-      </div>
+        <Image size={112} fluid={img.childImageSharp.fluid} />
+        <p tw="font-bold text-base">{name}</p>
+        <p tw="text-base text-gray-700">{career}</p>
+      </button>
       <DialogOverlay
         tw="z-30"
         isOpen={showDialog}
@@ -40,10 +43,14 @@ function TeamMember({ name, img }) {
             <VisuallyHidden>Close</VisuallyHidden> 
             <span aria-hidden>×</span> 
           </button>
-          <p>Hello there. I am a dialog</p>
+          <div tw="flex flex-col items-center">
+            <Image size={224} fluid={img.childImageSharp.fluid} />
+            <p tw="font-bold text-base">{name}</p>
+            <p>{description}</p>
+          </div>
         </DialogContent>
       </DialogOverlay>
-    </div>
+    </>
   )
 }
 
@@ -54,6 +61,7 @@ export function Team() {
         nodes {
           name
           description
+          career
           img {
             childImageSharp {
               fluid(quality: 100, maxWidth: 244, maxHeight: 244) {
@@ -79,9 +87,9 @@ export function Team() {
   return (
     <>
       <p tw="font-title font-bold text-3xl text-center">
-        Nuestro Equipo
+        Nuestro Equipo - TPI G60
       </p>
-      <div tw="flex flex-wrap max-w-screen-lg justify-around items-center mx-auto">
+      <div tw="flex flex-wrap max-w-screen-lg justify-around items-stretch mx-auto">
         {members.map(((props, i) => <TeamMember key={i} {...props} />))}
       </div>
     </>
