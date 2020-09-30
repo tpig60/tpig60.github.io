@@ -82,13 +82,13 @@ export function Team() {
   `
   let data = useStaticQuery(query)
   let members = data.allMembersJson.nodes
-  console.log(members)
 
   return (
     <>
       <p tw="font-title font-bold text-3xl text-center">
         Nuestro Equipo - TPI G60
       </p>
+      <div tw="h-4"/>
       <div tw="flex flex-wrap max-w-screen-lg justify-around items-stretch mx-auto">
         {members.map(((props, i) => <TeamMember key={i} {...props} />))}
       </div>

@@ -8,6 +8,17 @@ module.exports = {
   purge: [],
   theme: {
     extend: {
+      zIndex: {
+        '-10': '-10',
+      },
+      height: {
+        '60v': '60vh',
+        '80v': '80vh',
+      },
+      colors: {
+        "pasto": "#9ACD32",
+        "amarillo": "#FFFF33"
+      },
       fontFamily: {
         "title": ["Lato"],
         sans: [
