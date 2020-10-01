@@ -7,12 +7,13 @@ import { DialogOverlay, DialogContent } from "@reach/dialog"
 import VisuallyHidden from "@reach/visually-hidden"
 import "@reach/dialog/styles.css"
 
-const Image = styled(Img)(({ size }) => [
+const Image = styled(Img)(({ size, rounded }) => [
   `
     width: ${size}px;
     height: ${size}px;
   `,
-  tw`rounded-full shadow-md`,
+  rounded && tw`rounded-full`,
+  tw`shadow-md`,
 ])
 
 function TeamMember({ name, description, img, career }) {
@@ -28,7 +29,7 @@ function TeamMember({ name, description, img, career }) {
         onKeyDown={open}
         tw="w-full md:w-1/3 lg:w-1/5 flex flex-col p-4 justify-start items-center text-center font-sans"
       >
-        <Image size={112} fluid={img.childImageSharp.fluid} />
+        <Image rounded size={112} fluid={img.childImageSharp.fluid} />
         <p tw="font-bold text-base">{name}</p>
         <p tw="text-base text-gray-700">{career}</p>
       </button>
@@ -38,6 +39,7 @@ function TeamMember({ name, description, img, career }) {
         onDismiss={close}
       >
         <DialogContent
+          tw="rounded-md"
         >
           <button className="close-button" onClick={close}>
             <VisuallyHidden>Close</VisuallyHidden> 
@@ -46,7 +48,7 @@ function TeamMember({ name, description, img, career }) {
           <div tw="flex flex-col items-center">
             <Image size={224} fluid={img.childImageSharp.fluid} />
             <p tw="font-bold text-base">{name}</p>
-            <p>{description}</p>
+            <p tw="text-center">{description}</p>
           </div>
         </DialogContent>
       </DialogOverlay>

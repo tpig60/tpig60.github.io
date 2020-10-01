@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import tw, { css } from 'twin.macro'
-import { Link,  graphql, useStaticQuery } from 'gatsby'
+import { Link, graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 
 import { Team } from '../components/team'
@@ -41,7 +41,7 @@ export default function Home() {
 
   return (
     <div tw="font-sans">
-      <Header data={data}/>
+      <Header data={data} />
       <Nav />
       <main tw="bg-gray-100">
         <div tw="h-4" />
@@ -53,7 +53,9 @@ export default function Home() {
         </div>
         <div tw="h-4" />
       </main>
-      <footer tw="h-32 bg-teal-200" />
+      <footer tw="h-32 bg-teal-200">
+        <a href='https://www.freepik.com/photos/people'>People photo created by freepik - www.freepik.com</a>
+      </footer>
     </div>
   )
 }

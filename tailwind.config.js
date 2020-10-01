@@ -17,7 +17,8 @@ module.exports = {
       },
       colors: {
         "pasto": "#9ACD32",
-        "amarillo": "#FFFF33"
+        "amarillo": "#FFFF33",
+        "tpi": "#C0F66A"
       },
       fontFamily: {
         "title": ["Lato"],

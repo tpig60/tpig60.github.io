@@ -3,7 +3,7 @@ import * as React from "react"
 function SvgComponent(props) {
   return (
     <svg
-      viewBox="0 0 910 460"
+      viewBox="45 60 910 460"
       fill="none"
       strokeLinecap="square"
       strokeMiterlimit={10}

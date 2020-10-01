@@ -20,7 +20,7 @@ import { Header, Nav } from 'src/components/layout'
 
 import { ElementProps } from './data'
 
-const Element = ({ icon, letter, text, colors, description, images }) => {
+const Element = ({ icon, letter, text, colors, description, mainImage, images }) => {
   const { main, faded } = colors
   const [showDialog, setShowDialog] = useState(false)
   const open = () => setShowDialog(true)
@@ -31,7 +31,7 @@ const Element = ({ icon, letter, text, colors, description, images }) => {
         <p tw="rounded-full bg-blue-600 h-16 w-16 flex items-center justify-center text-center">{letter}</p>
         <p
           css={[
-            tw`text-white font-bold rounded-t-md text-2xl mt-2 py-1 w-full flex-grow flex items-center`,
+            tw`text-white font-bold rounded-t-md text-2xl mt-2 py-2 w-full flex-grow flex items-center`,
             faded,
             `
             writing-mode: vertical-rl;
@@ -63,25 +63,30 @@ const Element = ({ icon, letter, text, colors, description, images }) => {
           <div tw="flex">
             <div tw="w-1/2 text-center">
               <p tw="font-bold mb-4">Contexto</p>
-              <p tw="h-32">
-                <b>Imagen alusiva a contexto politica</b>
-              </p>
-              {(Array.isArray(description) && description.map((desc) => <p>{desc}</p>) ) || description}
+              <div tw="flex justify-center p-4">
+                <img tw="rounded-lg" src={mainImage} />
+              </div>
+              {(Array.isArray(description) && description.map((desc) => <p>{desc}</p>)) || description}
             </div>
             <div tw="w-1/2">
-              <p tw="font-bold mb-4 text-center">Actores</p>
+              <p tw="font-bold mt-4 mb-4 text-center">Actores</p>
               <div tw="space-y-4 flex flex-col items-center">
                 {
                   images && images.map(({ img, label }) => (
-                    <Tooltip tw="z-30 max-w-md whitespace-normal" label={label}>
-                      <img src={img} />
-                    </Tooltip>
+                    label ? (
+                      <Tooltip tw="z-30 max-w-md whitespace-normal p-4" label={label}>
+                        <img tw="rounded-lg" src={img} />
+                      </Tooltip>
+                    ) :
+                      (
+                        <img src={img} />
+                      )
                   ))
                 }
               </div>
             </div>
           </div>
-          <div tw="h-8"/>
+          <div tw="h-8" />
         </DialogContent>
 
       </DialogOverlay>
@@ -130,8 +135,35 @@ export default function Home() {
       <Header data={data} />
       <Nav />
       <main tw="bg-gray-100">
+        <p tw="text-gray-700 max-w-screen-lg mx-auto text-center">
+          (*) Haga click sobre cada elemento de la matriz PESTAL, esto desplegará un diálogo. Al posar el mouse encima de cada actor se mostrara más información.
+        </p>
         <div tw="h-4" />
         <Pestal />
+        <div tw="h-8" />
+        <div tw="mx-auto max-w-screen-lg">
+          <h1 tw="font-bold text-3xl self-start">
+            Referencias
+          </h1>
+          <ol tw="space-y-2">
+            <li>
+              [1] Agropinos, 14 de Agosto 2019, <b>Políticas y programas agrarios en Colombia que debe conocer.</b> Disponible en: <a href="https://www.agropinos.com/politicas-y-programas-agrarios-en-colombia">https://www.agropinos.com/politicas-y-programas-agrarios-en-colombia</a>
+            </li>
+            <li>
+              [2] Universidad de la Sabana, 2020, ¿Cómo está la desnutrición infantil en Colombia? disponible en: https://www.unisabana.edu.co/portaldenoticias/al-dia/como-esta-la-desnutricion-infantil-en-colombia/
+          </li>
+            <li>
+              [3] Programa de las naciones unidas para el desarrollo, 2020, Objetivo 2: Hambre cero. Disponible en: https://www.undp.org/content/undp/es/home/sustainable-development-goals/goal-2-zero-hunger.html
+          </li>
+            <li>
+              [4] Minagricultura, 2020, leyes referentes a la agricultura. Disponible en: https://www.minagricultura.gov.co/Normatividad/Paginas/Leyes.aspx
+          </li>
+            <li>
+              [5] Velez, León. 19 de septiembre del 2020. Entrevista a nombre del grupo 60 TPI 2020-02. Google Meet.
+          </li>
+          </ol>
+
+        </div>
         <div tw="h-32" />
         <Team />
         <div tw="h-4" />
