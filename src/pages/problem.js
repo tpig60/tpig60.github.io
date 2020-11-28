@@ -1,10 +1,10 @@
 import React from 'react'
-import tw, { css } from 'twin.macro'
+import 'twin.macro'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 
 import { Team } from '../components/team'
-import { Header, Nav } from '../components/layout'
+import { Header, Nav, Footer } from '../components/layout'
 
 import Ishikawa from 'src/images/problem'
 
@@ -44,7 +44,7 @@ export default function Home() {
         <div tw="h-4" />
         <div tw="max-w-screen-lg mx-auto text-center">
           <h2 tw="text-2xl font-bold">
-            Poca implementación de tecnología en el sector agro-colombiano junto con poco conocimiento técnico de los procesos productivos.
+            En un país tropical con condiciones climáticas tan cambiantes como Colombia, los sistemas de monitoreo son altamente favorables, pero no hay suficiente investigación ni desarrollo  local y asequible de estas tecnologías.
           </h2>
           <p tw="text-sm">
             A pesar de las grandes posibilidades que ofrece el agro en países como Colombia, este sector económico está en peligro a causa de su poca infraestructura y también por la alta informalidad, que frena de gran forma su productividad. Su desarrollo depende en gran medida de la infraestructura tecnológica contextualizada que se pueda investigar, desarrollar e implementar [1]. Adicional a lo anterior, la situación de pandemia que estamos viviendo ha impulsado a muchos a realizar huertos en sus propias casas, e incluso balcones. Son alternativas entretenidas, saludables y de alto impacto [2]. Estos cultivos en sitios cerrados tienen problemas de desarrollo por la poca luz que reciben en algunas épocas del año, por lo que juntando las dos perspectivas presentadas previamente, es adecuado, importante y de alta necesidad el diseño de un sistema de abstracción de información del cultivo para ayudar a los agricultores que siembren en sitios con poca luz y a aquellos individuos que tengan plantas en balcones o ventanas  a tomar mejores desiciones con respecto a sus cultivos.
@@ -70,7 +70,7 @@ export default function Home() {
               [1] León Dario Velez Vargas. <b>La rotación de cultivos: una alternativa económica y ecológica para la producción agricola en colombia</b> .
             </li>
             <li>
-              [2] Ingeniero Juan Carlos Naranjo
+              [2] Ingeniero Juan Carlos Pérez Naranjo
             </li>
           </ol>
         </div>
@@ -83,7 +83,7 @@ export default function Home() {
         </div>
         <div tw="h-4" />
       </main>
-      <footer tw="h-32 bg-teal-200" />
+      <Footer />
     </div>
   )
 }

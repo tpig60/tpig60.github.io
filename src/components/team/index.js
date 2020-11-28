@@ -87,9 +87,10 @@ export function Team() {
 
   return (
     <>
-      <p tw="font-title font-bold text-3xl text-center">
-        Nuestro Equipo - TPI G60
-      </p>
+      <h1 tw="font-title font-bold text-3xl text-center">
+        Nuestro Equipo - TPI G60: Sistema de Monitoreo de Cultivos
+      </h1>
+      <h2 tw="text-center">Profesor Mentor: Jhon Fabio Acuña</h2>
       <div tw="h-4"/>
       <div tw="flex flex-wrap max-w-screen-lg justify-around items-stretch mx-auto">
         {members.map(((props, i) => <TeamMember key={i} {...props} />))}

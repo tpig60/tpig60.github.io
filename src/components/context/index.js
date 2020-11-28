@@ -1,104 +1,26 @@
-import React, { useState } from 'react'
-import tw, { css } from 'twin.macro'
+import React from 'react'
+import tw from 'twin.macro'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 
 import { Team } from 'src/components/team'
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-import { DialogOverlay, DialogContent } from "@reach/dialog"
-import VisuallyHidden from "@reach/visually-hidden"
-import "@reach/dialog/styles.css"
-
-import Tooltip, { useTooltip, TooltipPopup } from "@reach/tooltip";
 import "@reach/tooltip/styles.css";
 
-import { Header, Nav } from 'src/components/layout'
+import { Header, Nav, Footer } from 'src/components/layout'
+import { Pestal } from './pestal'
 
 
+import ods2 from 'src/images/ods/ODS_2.jpg'
+import ods9 from 'src/images/ods/ODS_9.png'
+import ods12 from 'src/images/ods/ODS_12.jpg'
+import Tooltip from "@reach/tooltip";
 
-import { ElementProps } from './data'
-
-const Element = ({ icon, letter, text, colors, description, mainImage, images }) => {
-  const { main, faded } = colors
-  const [showDialog, setShowDialog] = useState(false)
-  const open = () => setShowDialog(true)
-  const close = () => setShowDialog(false)
+const ODS = ({ src, text }) => {
+  const ODSImg = tw.img`w-32 h-32 rounded-sm`
   return (
-    <>
-      <div tw="flex flex-col items-center text-white text-6xl cursor-pointer" onClick={open}>
-        <p tw="rounded-full bg-blue-600 h-16 w-16 flex items-center justify-center text-center">{letter}</p>
-        <p
-          css={[
-            tw`text-white font-bold rounded-t-md text-2xl mt-2 py-2 w-full flex-grow flex items-center`,
-            faded,
-            `
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            `
-          ]}
-        >
-          {text}
-        </p>
-        <div css={[tw`text-white w-24 p-2 rounded-b-md flex justify-center items-center`, main]}>
-          <FontAwesomeIcon icon={icon} />
-        </div>
-      </div>
-      <DialogOverlay
-        tw="z-30"
-        isOpen={showDialog}
-        onDismiss={close}
-      >
-        <DialogContent
-          tw="w-3/5 overflow-y-scroll h-80v rounded-lg"
-        >
-          <div tw="flex">
-            <button className="close-button" onClick={close}>
-              <VisuallyHidden>Close</VisuallyHidden>
-              <span tw="text-2xl text-gray-700" aria-hidden>×</span>
-            </button>
-            <p tw="mx-auto font-bold">{text}</p>
-          </div>
-          <div tw="flex">
-            <div tw="w-1/2 text-center">
-              <p tw="font-bold mb-4">Contexto</p>
-              <div tw="flex justify-center p-4">
-                <img tw="rounded-lg" src={mainImage} />
-              </div>
-              {(Array.isArray(description) && description.map((desc) => <p>{desc}</p>)) || description}
-            </div>
-            <div tw="w-1/2">
-              <p tw="font-bold mt-4 mb-4 text-center">Actores</p>
-              <div tw="space-y-4 flex flex-col items-center">
-                {
-                  images && images.map(({ img, label }) => (
-                    label ? (
-                      <Tooltip tw="z-30 max-w-md whitespace-normal p-4" label={label}>
-                        <img tw="rounded-lg" src={img} />
-                      </Tooltip>
-                    ) :
-                      (
-                        <img src={img} />
-                      )
-                  ))
-                }
-              </div>
-            </div>
-          </div>
-          <div tw="h-8" />
-        </DialogContent>
-
-      </DialogOverlay>
-    </>
-  )
-}
-
-function Pestal() {
-  return (
-    <div tw="max-w-screen-lg mx-auto flex justify-around items-stretch">
-      {ElementProps.map(props => <Element {...props} />)}
-    </div>
+    <Tooltip label={text} tw="max-w-md whitespace-normal p-4">
+      <ODSImg src={src}/>
+    </Tooltip>
   )
 }
 
@@ -136,10 +58,16 @@ export default function Home() {
       <Nav />
       <main tw="bg-gray-100">
         <p tw="text-gray-700 max-w-screen-lg mx-auto text-center">
-          (*) Haga click sobre cada elemento de la matriz PESTAL, esto desplegará un diálogo. Al posar el mouse encima de cada actor se mostrara más información.
+          (*) Haga click sobre cada elemento de la matriz PESTAL, esto desplegará un diálogo. Al posar el mouse encima de cada actor se mostrará más información.
         </p>
         <div tw="h-4" />
         <Pestal />
+        <div tw="h-4" />
+        <div tw="w-3/5 mx-auto flex justify-around">
+          <ODS src={ods2} text="El incremento en la productividad agrícola es uno de los primeros pasos para satisfacer las necesidades nutricionales de aquellos más vulnerables."/>
+          <ODS src={ods9} text="El agro Colombiano, aunque ya presenta industrialización e uso de tecnología este no está presente en todos los niveles del agro, pequeños y medianos agricultores y campesinos rurales y urbanos no cuentan con fácil acceso a estas tecnologías."/>
+          <ODS src={ods12} text="La tecnificación de la agricultura urbana y rural permite mejorar la toma de decision de cultivos y responder mejor a las necesidades propias y del mercado a partir de mayor datos e información disponible."/>
+        </div>
         <div tw="h-8" />
         <div tw="mx-auto max-w-screen-lg">
           <h1 tw="font-bold text-3xl self-start">
@@ -164,6 +92,7 @@ export default function Home() {
           </ol>
 
         </div>
+        <div tw="h-4" />
         <div tw="h-32" />
         <Team />
         <div tw="h-4" />
@@ -173,7 +102,7 @@ export default function Home() {
         </div>
         <div tw="h-4" />
       </main>
-      <footer tw="h-32 bg-teal-200" />
+      <Footer />
     </div>
   )
 }

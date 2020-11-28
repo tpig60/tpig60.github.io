@@ -1,15 +1,11 @@
 import React from 'react'
 import Img from 'gatsby-image'
-import { Link, navigate } from 'gatsby'
+import { navigate } from 'gatsby'
 import tw, { styled } from 'twin.macro'
-
-const Button = tw.button`
-  bg-amarillo hover:bg-yellow-400 text-gray-600 font-bold py-2 px-4 border-b-4 border-yellow-700 hover:border-yellow-500 rounded
-`
 
 const StyledNavButton = styled.a(({ to, location }) => [
   tw`bg-green-700 hover:bg-green-500 text-white font-bold py-2 px-4 border-b-4 border-green-800 hover:border-green-600 rounded`,
-  (location == to) && tw`bg-green-500 border-green-600`
+  (location === to) && tw`bg-green-500 border-green-600`
 ])
 
 const NavButton = (props) => {
@@ -25,7 +21,8 @@ const NavButton = (props) => {
 }
 
 export const Header = ({ data }) => {
-  let title = "¿Cómo ayudar a los agricultores rurales y urbanos colombianos a que cuenten con información relevante de su cultivo (temperatura, humedad e intensidad lumunínica) de manera rápida, autónoma y económica, para facilitar técnicas de agricultura sostenible y mejorar su productividad?"
+  let title = "¿Cómo ayudar a los agricultores rurales y urbanos colombianos a que cuenten con información relevante de su cultivo (temperatura, humedad e intensidad lumuníca) de manera rápida, autónoma y económica, para facilitar técnicas de agricultura sostenible y mejorar su productividad?"
+  title = "¿Cómo ayudar a los agricultores rurales y urbanos colombianos a monitorear temperatura, humedad e intensidad lumínica, de manera rápida, autónoma y económica, para facilitar técnicas de agricultura sostenible y promover la seguridad alimentaria?"
   return (
     <header tw="relative w-full h-64 flex justify-center items-center">
       <div tw="fixed top-0 w-full -z-10">
@@ -67,3 +64,9 @@ export const Nav = () => {
     </nav>
   )
 }
+
+export const Footer = () => (
+  <footer tw="h-32 bg-green-500 flex items-center justify-center text-center">
+    <a href='https://www.freepik.com/photos/people'>People photo created by freepik - www.freepik.com</a>
+  </footer>
+)

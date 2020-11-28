@@ -1,13 +1,11 @@
 
 import React from 'react'
-import tw, { css } from 'twin.macro'
+import 'twin.macro'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 
 import { Team } from '../components/team'
-import { Header, Nav } from '../components/layout'
-
-import BackgroundSvg from 'src/images/antecedentes'
+import { Header, Nav, Footer } from '../components/layout'
 
 import Mapa from 'src/images/antecedentes/mapa'
 import Pin1 from 'src/images/antecedentes/pin1'
@@ -68,11 +66,7 @@ export default function Home() {
     }
   `
   const data = useStaticQuery(query)
-  let negZ = css`
-    z-index: -2;
-  `
 
-  let scale = 2.9
   let scaleMap = 2
 
   return (
@@ -142,7 +136,7 @@ export default function Home() {
         </div>
         <div tw="h-4" />
       </main>
-      <footer tw="h-32 bg-teal-200" />
+      <Footer />
     </div>
   )
 }
